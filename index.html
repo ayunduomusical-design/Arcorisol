@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arcorisol | Sala de Cuna y Guardería</title>
+<meta name="description" content="Arcorisol, sala de cuna y guardería: cuidado con cariño y experiencias que estimulan el desarrollo integral de tus pequeños. Agenda una visita.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Arcorisol | Sala de Cuna y Guardería">
+<meta property="og:description" content="Un lugar para crecer, descubrir y sonreír. Conoce Arcorisol y agenda una visita.">
+<meta property="og:locale" content="es_CL">
+<!-- Para compartir en redes: agrega aquí la URL de una imagen real (1200x630) -->
+<meta property="og:image" content="">
+<meta name="theme-color" content="#FFF8EC">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='36' r='14' fill='%23FFC933'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* ===== Variables de marca ===== */
+:root{
+  --sol:#FFC933; --coral:#FF8E7A; --cielo:#7CC6EE; --menta:#8FD6B5; --lavanda:#B9A6E8;
+  --crema:#FFF8EC; --tinta:#2F3350; --suave:#5A5F7D; --blanco:#fff;
+  --r:26px; --sombra:0 10px 30px rgba(47,51,80,.09);
+  --titulo:'Fredoka','Trebuchet MS',sans-serif; --texto:'Nunito','Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--texto);color:var(--tinta);background:var(--crema);line-height:1.65;font-size:1.05rem}
+h1,h2,h3{font-family:var(--titulo);font-weight:600;line-height:1.15}
+h1{font-size:clamp(2.3rem,5.5vw,4rem)} h2{font-size:clamp(1.8rem,3.6vw,2.6rem);margin-bottom:.6rem} h3{font-size:1.3rem;margin-bottom:.3rem}
+p{color:var(--suave)} a{color:inherit}
+img,svg{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--tinta);outline-offset:3px;border-radius:8px}
+.wrap{width:min(1120px,92%);margin-inline:auto}
+section{padding:5.5rem 0}
+.intro{max-width:620px;margin-bottom:2.5rem}
+.skip{position:absolute;left:-999px;background:var(--tinta);color:#fff;padding:.6rem 1rem;z-index:99}
+.skip:focus{left:1rem;top:1rem}
+
+/* ===== Botones ===== */
+.btn{display:inline-block;border:0;cursor:pointer;font:800 1rem var(--texto);text-decoration:none;padding:.9rem 1.7rem;border-radius:999px;transition:transform .25s,box-shadow .25s,background .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(47,51,80,.18)}
+.btn-sol{background:var(--sol);color:var(--tinta)} .btn-sol:hover{background:#ffd75e}
+.btn-linea{background:transparent;border:2px solid var(--tinta);color:var(--tinta)} .btn-linea:hover{background:var(--tinta);color:#fff}
+.btn-wa{background:#1f9d55;color:#fff}
+
+/* ===== Encabezado ===== */
+header{position:sticky;top:0;z-index:50;background:rgba(255,248,236,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(47,51,80,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:.5rem;text-decoration:none;font-family:var(--titulo);font-weight:600;font-size:1.55rem;letter-spacing:.04em}
+.logo svg{width:44px;height:36px}
+.logo .a{color:var(--coral)}.logo .b{color:var(--sol)}.logo .c{color:var(--cielo)}.logo .d{color:var(--menta)}.logo .e{color:var(--lavanda)}
+nav ul{display:flex;gap:1.6rem;list-style:none;align-items:center;padding:0}
+nav a{text-decoration:none;font-weight:600;color:var(--tinta);padding:.3rem 0;border-bottom:3px solid transparent;transition:border-color .2s}
+nav a:not(.btn):hover{border-color:var(--sol)}
+nav .btn{padding:.6rem 1.2rem}
+.burger{display:none;background:none;border:0;cursor:pointer;width:44px;height:44px}
+.burger span{display:block;height:3px;background:var(--tinta);margin:6px 8px;border-radius:3px;transition:transform .3s,opacity .3s}
+.burger[aria-expanded=true] span:nth-child(1){transform:translateY(9px) rotate(45deg)}
+.burger[aria-expanded=true] span:nth-child(2){opacity:0}
+.burger[aria-expanded=true] span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+
+/* ===== Portada ===== */
+.hero{padding:3.5rem 0 5rem;overflow:hidden;position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:3rem;align-items:center}
+.hero p.lead{font-size:1.2rem;margin:1.2rem 0 2rem;max-width:34rem}
+.acciones{display:flex;gap:.9rem;flex-wrap:wrap}
+.escena{position:relative;aspect-ratio:1/1;border-radius:46% 54% 40% 60%/55% 45% 55% 45%;overflow:hidden;background:linear-gradient(160deg,#cdeafa,#fff1c4);box-shadow:var(--sombra);animation:flota 7s ease-in-out infinite}
+.escena img,.escena svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@keyframes flota{50%{transform:translateY(-10px) rotate(.8deg)}}
+.arco-fondo{position:absolute;right:-120px;top:-120px;width:420px;opacity:.5;z-index:-1}
+
+/* ===== Nosotros / pilares ===== */
+.pilares{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.card{background:var(--blanco);border-radius:var(--r);padding:2rem 1.7rem;box-shadow:var(--sombra);transition:transform .3s}
+.card:hover{transform:translateY(-6px)}
+.ico{width:64px;height:64px;border-radius:55% 45% 60% 40%/50% 55% 45% 50%;display:grid;place-items:center;font-size:1.9rem;margin-bottom:1rem}
+.c1{background:#FFD9D1}.c2{background:#CFEBFA}.c3{background:#D6F1E4}.c4{background:#FFEFB3}.c5{background:#E5DCF8}.c6{background:#FFD9D1}
+#nosotros .wrap>p{max-width:700px;margin-bottom:2.2rem}
+.pilares .card:nth-child(2){margin-top:1.5rem}
+
+/* ===== Servicios ===== */
+#servicios{background:linear-gradient(#fff,#fff);border-radius:60px 60px 0 0}
+.servicios{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.servicios .card{background:var(--crema);box-shadow:none;border:2px solid #f1e6d0}
+
+/* ===== Filosofía ===== */
+#filosofia{background:var(--tinta);color:#fff;position:relative;overflow:hidden;border-radius:60px 60px 0 0;margin-top:-1px}
+#filosofia h2{font-size:clamp(2rem,4.6vw,3.4rem);max-width:760px;margin-bottom:2rem}
+#filosofia p{color:#d9dbea}
+.valores{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;margin-top:2rem}
+.valores div{border-left:5px solid var(--sol);padding:.3rem 1rem}
+.valores div:nth-child(2){border-color:var(--coral)}.valores div:nth-child(3){border-color:var(--cielo)}.valores div:nth-child(4){border-color:var(--menta)}.valores div:nth-child(5){border-color:var(--lavanda)}
+.valores b{font:600 1.15rem var(--titulo);color:#fff;display:block}
+
+/* ===== Galería ===== */
+.galeria{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:220px;gap:1rem}
+.foto{position:relative;border:0;padding:0;border-radius:22px;overflow:hidden;cursor:zoom-in;display:grid;place-items:center;font-size:3.5rem;transition:transform .3s}
+.foto:hover{transform:scale(1.02)}
+.foto:nth-child(1),.foto:nth-child(4){grid-row:span 2}
+.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.foto span.cap{position:absolute;left:0;right:0;bottom:0;padding:.6rem 1rem;background:linear-gradient(transparent,rgba(47,51,80,.65));color:#fff;font:700 .95rem var(--texto);text-align:left;font-size:.95rem}
+.nota{margin-top:1rem;font-size:.9rem}
+#lightbox{position:fixed;inset:0;background:rgba(47,51,80,.88);display:none;place-items:center;z-index:100;padding:1rem}
+#lightbox.on{display:grid}
+#lightbox figure{max-width:min(900px,94vw);text-align:center;color:#fff}
+#lightbox .vista{width:min(900px,92vw);max-height:72vh;aspect-ratio:4/3;border-radius:20px;overflow:hidden;display:grid;place-items:center;font-size:9rem}
+#lightbox .vista img{width:100%;height:100%;object-fit:contain;background:#111}
+#lightbox figcaption{margin-top:.8rem}
+.lb-btn{position:absolute;background:#fff;border:0;border-radius:50%;width:48px;height:48px;font-size:1.5rem;cursor:pointer;color:var(--tinta)}
+.lb-x{top:1rem;right:1rem}.lb-p{left:1rem;top:50%}.lb-n{right:1rem;top:50%}
+
+/* ===== Contacto ===== */
+#contacto{background:#fff;border-radius:60px 60px 0 0}
+.contacto{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem}
+.datos{list-style:none;padding:0;margin-top:1.5rem;display:grid;gap:1.1rem}
+.datos b{display:block;font-family:var(--titulo);font-weight:600}
+.editable{background:#FFF3C4;border-radius:8px;padding:0 .4rem;color:var(--tinta)}
+form{background:var(--crema);padding:2rem;border-radius:var(--r);display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.campo{display:flex;flex-direction:column;gap:.3rem}
+.campo.full{grid-column:1/-1}
+label{font-weight:800;font-size:.95rem}
+input,textarea{font:inherit;padding:.8rem 1rem;border:2px solid #e8dcc3;border-radius:14px;background:#fff;color:var(--tinta)}
+input:focus,textarea:focus{border-color:var(--cielo);outline:0}
+input[aria-invalid=true],textarea[aria-invalid=true]{border-color:#c8432f}
+.error{color:#b23a28;font-size:.85rem;min-height:1.1em}
+.envio{grid-column:1/-1;display:flex;gap:.8rem;flex-wrap:wrap}
+#estado{grid-column:1/-1;font-weight:800;min-height:1.4em}
+
+/* ===== Pie ===== */
+footer{background:var(--tinta);color:#d9dbea;padding:3.5rem 0 1.5rem}
+.pie{display:grid;grid-template-columns:1.4fr 1fr 1.2fr;gap:2.5rem}
+footer h3{color:#fff;font-size:1.1rem}
+footer ul{list-style:none;padding:0;display:grid;gap:.4rem}
+footer p{color:#d9dbea}
+footer a{text-decoration:none} footer a:hover{text-decoration:underline}
+.redes{display:flex;gap:.7rem;margin-top:1rem}
+.redes a{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.12);display:grid;place-items:center;transition:background .2s,transform .2s}
+.redes a:hover{background:var(--sol);transform:translateY(-3px)}
+.redes svg{width:20px;height:20px;fill:#fff}.redes a:hover svg{fill:var(--tinta)}
+.copy{border-top:1px solid rgba(255,255,255,.15);margin-top:2.5rem;padding-top:1.2rem;font-size:.9rem;text-align:center}
+
+/* ===== Flotante WhatsApp y aviso ===== */
+.wa-flot{position:fixed;right:1.1rem;bottom:1.1rem;width:60px;height:60px;border-radius:50%;background:#1f9d55;display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.25);z-index:60;transition:transform .25s}
+.wa-flot:hover{transform:scale(1.1)} .wa-flot svg{width:32px;height:32px;fill:#fff}
+#aviso{position:fixed;left:50%;bottom:5.5rem;transform:translate(-50%,20px);background:var(--tinta);color:#fff;padding:.8rem 1.3rem;border-radius:14px;opacity:0;pointer-events:none;transition:.3s;z-index:120;max-width:90vw;text-align:center}
+#aviso.on{opacity:1;transform:translate(-50%,0)}
+
+/* ===== Animación de aparición ===== */
+.rev{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.rev.vis{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rev{opacity:1;transform:none}}
+
+/* ===== Responsive ===== */
+@media(max-width:900px){
+  .hero .wrap,.contacto,.pie{grid-template-columns:1fr}
+  .escena{max-width:420px;margin:0 auto;order:-1}
+  .pilares,.servicios{grid-template-columns:1fr 1fr}
+  .pilares .card:nth-child(2){margin-top:0}
+  .galeria{grid-template-columns:1fr 1fr}
+  .burger{display:block}
+  nav ul{position:absolute;left:0;right:0;top:72px;background:var(--crema);flex-direction:column;padding:1.5rem;gap:1.1rem;border-bottom:1px solid rgba(47,51,80,.1);display:none}
+  nav ul.abierto{display:flex}
+}
+@media(max-width:600px){
+  section{padding:4rem 0}
+  .pilares,.servicios,form{grid-template-columns:1fr}
+  .galeria{grid-auto-rows:170px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<!-- Símbolos SVG reutilizables: logotipo (arcoíris + sol) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="marca" viewBox="0 0 88 70">
+    <circle cx="44" cy="52" r="11" fill="#FFC933"/>
+    <g stroke="#FFC933" stroke-width="3" stroke-linecap="round"><path d="M44 33v-4M30 38l-3-3M58 38l3-3"/></g>
+    <g fill="none" stroke-width="6" stroke-linecap="round">
+      <path d="M6 66a38 38 0 0 1 76 0" stroke="#B9A6E8"/>
+      <path d="M13 66a31 31 0 0 1 62 0" stroke="#7CC6EE"/>
+      <path d="M20 66a24 24 0 0 1 48 0" stroke="#8FD6B5"/>
+      <path d="M27 66a17 17 0 0 1 34 0" stroke="#FF8E7A"/>
+    </g>
+  </symbol>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#inicio" aria-label="Arcorisol, ir al inicio">
+      <svg aria-hidden="true"><use href="#marca"/></svg>
+      <span><span class="a">A</span><span class="b">R</span><span class="c">C</span><span class="d">O</span><span class="e">R</span><span class="a">I</span><span class="b">S</span><span class="c">O</span><span class="d">L</span></span>
+    </a>
+    <nav aria-label="Principal">
+      <button class="burger" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+      <ul id="menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#servicios">Nuestros servicios</a></li>
+        <li><a href="#espacio">Nuestro espacio</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a class="btn btn-sol" href="#contacto">Agenda una visita</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+<!-- ===== PORTADA ===== -->
+<section class="hero" id="inicio">
+  <svg class="arco-fondo" viewBox="0 0 88 70" aria-hidden="true"><use href="#marca"/></svg>
+  <div class="wrap">
+    <div>
+      <h1>Un lugar para crecer, descubrir y sonreír.</h1>
+      <p class="lead">En Arcorisol acompañamos los primeros pasos de tus pequeños con cariño, dedicación y experiencias que estimulan su desarrollo integral.</p>
+      <div class="acciones">
+        <a class="btn btn-sol" href="#nosotros">Conoce Arcorisol</a>
+        <a class="btn btn-linea" href="#contacto">Contáctanos</a>
+      </div>
+    </div>
+    <!-- Para usar una fotografía real: escribe su ruta en CONFIG.heroFoto (ver script). Si no hay foto, se muestra la ilustración. -->
+    <div class="escena" id="escena">
+      <svg viewBox="0 0 400 400" role="img" aria-label="Ilustración de niños jugando bajo un arcoíris y un sol">
+        <circle cx="320" cy="80" r="42" fill="#FFC933"/>
+        <g fill="none" stroke-width="16" stroke-linecap="round">
+          <path d="M40 270a160 160 0 0 1 320 0" stroke="#B9A6E8"/><path d="M62 270a138 138 0 0 1 276 0" stroke="#7CC6EE"/>
+          <path d="M84 270a116 116 0 0 1 232 0" stroke="#8FD6B5"/><path d="M106 270a94 94 0 0 1 188 0" stroke="#FF8E7A"/>
+        </g>
+        <path d="M0 330q100-45 200-10t200-10v90H0z" fill="#8FD6B5"/>
+        <g><circle cx="130" cy="290" r="26" fill="#FFD9B8"/><path d="M104 286a26 26 0 0 1 52 0c-10-12-40-12-52 0z" fill="#8a5a3c"/><rect x="108" y="314" width="44" height="46" rx="18" fill="#FF8E7A"/></g>
+        <g><circle cx="230" cy="300" r="22" fill="#F2C9A0"/><path d="M208 296a22 22 0 0 1 44 0c-8-10-34-10-44 0z" fill="#2F3350"/><rect x="210" y="321" width="40" height="42" rx="16" fill="#7CC6EE"/></g>
+        <g><circle cx="300" cy="305" r="20" fill="#FFD9B8"/><path d="M280 300a20 20 0 0 1 40 0c-6-9-32-9-40 0z" fill="#d88a3c"/><rect x="282" y="325" width="36" height="38" rx="15" fill="#B9A6E8"/></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NOSOTROS ===== -->
+<section id="nosotros">
+  <div class="wrap">
+    <h2 class="rev">Bienvenidos a Arcorisol</h2>
+    <p class="rev">Somos una sala de cuna y guardería dedicada al cuidado y acompañamiento de niños en sus primeros años de vida. Creemos que cada niño es único y merece crecer en un entorno donde se sienta querido, protegido, respetado y estimulado.</p>
+    <div class="pilares">
+      <article class="card rev"><div class="ico c1" aria-hidden="true">💛</div><h3>Amor y cuidado</h3><p>Cada niño es recibido con calidez, atención y un trato cercano.</p></article>
+      <article class="card rev"><div class="ico c2" aria-hidden="true">🔍</div><h3>Aprendizaje y descubrimiento</h3><p>Los niños aprenden explorando, preguntando y jugando.</p></article>
+      <article class="card rev"><div class="ico c3" aria-hidden="true">🌱</div><h3>Desarrollo integral</h3><p>Acompañamos lo emocional, lo social, lo físico y lo creativo.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICIOS ===== -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="intro rev"><h2>Nuestros servicios</h2><p>Pensados para acompañar a tu hijo o hija en cada etapa de sus primeros años.</p></div>
+    <div class="servicios">
+      <article class="card rev"><div class="ico c1" aria-hidden="true">🍼</div><h3>Sala de cuna</h3><p>Un espacio tranquilo y afectuoso para los más pequeños.</p></article>
+      <article class="card rev"><div class="ico c2" aria-hidden="true">🤗</div><h3>Cuidado infantil</h3><p>Atención dedicada, con el bienestar de cada niño como prioridad.</p></article>
+      <article class="card rev"><div class="ico c3" aria-hidden="true">🎈</div><h3>Actividades recreativas</h3><p>Momentos de movimiento, juego y diversión compartida.</p></article>
+      <article class="card rev"><div class="ico c4" aria-hidden="true">🌟</div><h3>Estimulación temprana</h3><p>Experiencias que despiertan los sentidos y las habilidades.</p></article>
+      <article class="card rev"><div class="ico c5" aria-hidden="true">🧩</div><h3>Juegos y experiencias educativas</h3><p>Aprender jugando, con materiales que invitan a descubrir.</p></article>
+      <article class="card rev"><div class="ico c6" aria-hidden="true">🌈</div><h3>Acompañamiento del desarrollo infantil</h3><p>Observamos y celebramos los avances de cada niño.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FILOSOFÍA ===== -->
+<section id="filosofia">
+  <div class="wrap">
+    <h2 class="rev">Cada pequeño paso es un gran comienzo</h2>
+    <p class="rev" style="max-width:680px">Los primeros años dejan huella. En esta etapa los niños aprenden con todo el cuerpo y con el corazón, y necesitan adultos que los acompañen con paciencia y afecto.</p>
+    <div class="valores rev">
+      <div><b>Juego</b>La forma natural de aprender.</div>
+      <div><b>Exploración</b>Tocar, mirar y preguntar.</div>
+      <div><b>Creatividad</b>Imaginar y expresarse libremente.</div>
+      <div><b>Socialización</b>Compartir y crecer con otros.</div>
+      <div><b>Afecto</b>Seguridad para atreverse a más.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALERÍA ===== -->
+<section id="espacio" style="background:var(--crema)">
+  <div class="wrap">
+    <div class="intro rev"><h2>Nuestro espacio</h2><p>Un vistazo a los ambientes donde los niños juegan, crean y descansan.</p></div>
+    <div class="galeria" id="galeria"></div>
+    <p class="nota">Las imágenes son de referencia. Para usar fotos reales de Arcorisol, escribe sus rutas en <code>CONFIG.galeria</code> dentro del script.</p>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section id="contacto">
+  <div class="wrap contacto">
+    <div class="rev">
+      <h2>Conversemos</h2>
+      <p>Cuéntanos sobre tu hijo o hija y agenda una visita para conocer Arcorisol.</p>
+      <!-- DATOS EDITABLES: reemplaza el texto resaltado -->
+      <ul class="datos">
+        <li><b>Dirección</b><span class="editable" data-editable>[Dirección por completar]</span></li>
+        <li><b>Teléfono</b><span class="editable" data-editable>[Teléfono por completar]</span></li>
+        <li><b>Correo electrónico</b><span class="editable" data-editable>[Correo por completar]</span></li>
+        <li><b>Horarios de atención</b><span class="editable" data-editable>[Horarios por completar]</span></li>
+      </ul>
+    </div>
+    <form id="form" class="rev" novalidate aria-label="Formulario de contacto">
+      <div class="campo"><label for="apoderado">Nombre del apoderado</label><input id="apoderado" name="apoderado" autocomplete="name" required><span class="error"></span></div>
+      <div class="campo"><label for="correo">Correo electrónico</label><input id="correo" name="correo" type="email" autocomplete="email" required><span class="error"></span></div>
+      <div class="campo"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" required><span class="error"></span></div>
+      <div class="campo"><label for="nino">Nombre del niño o niña</label><input id="nino" name="nino" required><span class="error"></span></div>
+      <div class="campo"><label for="edad">Edad del niño o niña</label><input id="edad" name="edad" placeholder="Ej: 8 meses, 2 años" required><span class="error"></span></div>
+      <div class="campo full"><label for="mensaje">Mensaje o consulta</label><textarea id="mensaje" name="mensaje" rows="4" required></textarea><span class="error"></span></div>
+      <div class="envio">
+        <button type="submit" class="btn btn-sol">Enviar por correo</button>
+        <button type="button" class="btn btn-wa" id="btnWa">Enviar por WhatsApp</button>
+      </div>
+      <p id="estado" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ===== PIE ===== -->
+<footer>
+  <div class="wrap">
+    <div class="pie">
+      <div>
+        <a class="logo" href="#inicio" style="color:#fff"><svg aria-hidden="true"><use href="#marca"/></svg>ARCORISOL</a>
+        <p style="margin-top:.8rem">Sala de cuna y guardería dedicada al cuidado y acompañamiento de niños en sus primeros años.</p>
+        <div class="redes">
+          <a href="#" data-red="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 22v-8h2.7l.5-3.2h-3.2V8.7c0-.9.4-1.7 1.8-1.7h1.5V4.2S15.5 4 14.3 4C11.8 4 10.2 5.500 10.200 8.100v2.700H7.500V14h2.700v8z"/></svg></a>
+          <a href="#" data-red="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm5 3.500a4.500 4.500 0 1 1 0 9 4.500 4.500 0 0 1 0-9zm0 2a2.500 2.500 0 1 0 0 5 2.500 2.500 0 0 0 0-5zM17.500 5.500a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
+        </div>
+      </div>
+      <div><h3>Accesos rápidos</h3>
+        <ul><li><a href="#nosotros">Nosotros</a></li><li><a href="#servicios">Nuestros servicios</a></li><li><a href="#espacio">Nuestro espacio</a></li><li><a href="#contacto">Contacto</a></li></ul>
+      </div>
+      <div><h3>Contacto</h3>
+        <ul><li data-espejo="0"></li><li data-espejo="1"></li><li data-espejo="2"></li><li data-espejo="3"></li></ul>
+      </div>
+    </div>
+    <p class="copy">© <span id="anio"></span> Arcorisol – Sala de Cuna y Guardería. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<a class="wa-flot" id="waFlot" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.600 15L2 22l5.200-1.400A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.200 14.800l-.3-.2-3 .8.8-2.900-.2-.3A8 8 0 0 1 12 4zm-3 3.500c-.2 0-.5.100-.7.400-.3.300-1 1-1 2.400s1 2.800 1.200 3c.1.200 2 3.100 4.900 4.300 2.400 1 2.900.8 3.400.7.500-.1 1.700-.7 1.900-1.400.2-.7.200-1.200.2-1.400-.1-.1-.3-.2-.7-.4l-1.800-.9c-.3-.1-.5-.1-.7.100l-.8 1c-.1.200-.3.200-.6.100-1.100-.5-2.100-1.200-2.900-2.300-.2-.3 0-.4.100-.6l.5-.6.300-.5v-.5l-.9-2c-.2-.5-.4-.5-.6-.5z"/></svg></a>
+<div id="aviso" role="status" aria-live="polite"></div>
+
+<!-- Visor ampliado de la galería -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <button class="lb-btn lb-x" aria-label="Cerrar">✕</button>
+  <button class="lb-btn lb-p" aria-label="Anterior">‹</button>
+  <button class="lb-btn lb-n" aria-label="Siguiente">›</button>
+  <figure><div class="vista" id="lbVista"></div><figcaption id="lbCap"></figcaption></figure>
+</div>
+
+<script>
+/* =====================================================
+   CONFIGURACIÓN — EDITA AQUÍ LOS DATOS REALES
+   ===================================================== */
+const CONFIG = {
+  whatsapp: "REEMPLAZAR_NUMERO_WHATSAPP", // Formato internacional sin "+" ni espacios (ej: código de país + número)
+  correo:   "REEMPLAZAR_CORREO",          // Correo que recibirá las consultas
+  heroFoto: "",                            // Ruta de foto real para la portada (ej: "img/portada.jpg")
+  redes: { Facebook: "", Instagram: "" },  // URLs reales de redes sociales
+  // Fotos de la galería: pon la ruta en "src". Si queda vacío se muestra una ilustración de referencia.
+  galeria: [
+    { src:"", alt:"Sala luminosa con espacio para jugar", cap:"Espacios infantiles", emoji:"🏠", color:"#CFEBFA" },
+    { src:"", alt:"Juegos didácticos de encajes y bloques", cap:"Juegos didácticos", emoji:"🧩", color:"#FFEFB3" },
+    { src:"", alt:"Niños en una actividad de pintura", cap:"Actividades creativas", emoji:"🎨", color:"#FFD9D1" },
+    { src:"", alt:"Rincón de lectura y aprendizaje", cap:"Rincones de aprendizaje", emoji:"📚", color:"#D6F1E4" },
+    { src:"", alt:"Ambiente tranquilo para el descanso", cap:"Ambientes de descanso", emoji:"🌙", color:"#E5DCF8" },
+    { src:"", alt:"Niños jugando en grupo", cap:"Juego en compañía", emoji:"🎈", color:"#FFD9D1" }
+  ]
+};
+const PENDIENTE = v => !v || v.startsWith("REEMPLAZAR");
+const $ = s => document.querySelector(s);
+const aviso = msg => { const a=$("#aviso"); a.textContent=msg; a.classList.add("on"); clearTimeout(aviso.t); aviso.t=setTimeout(()=>a.classList.remove("on"),3800); };
+
+/* Año del pie de página */
+$("#anio").textContent = new Date().getFullYear();
+
+/* Foto de portada (si existe; si falla se conserva la ilustración) */
+if (CONFIG.heroFoto) {
+  const im = new Image(); im.alt = "Niños jugando y aprendiendo en un ambiente luminoso";
+  im.onload = () => { $("#escena").innerHTML = ""; $("#escena").appendChild(im); };
+  im.src = CONFIG.heroFoto;
+}
+
+/* Menú móvil */
+const burger = $(".burger"), menu = $("#menu");
+const cerrarMenu = () => { menu.classList.remove("abierto"); burger.setAttribute("aria-expanded","false"); burger.setAttribute("aria-label","Abrir menú"); };
+burger.addEventListener("click", () => {
+  const abierto = menu.classList.toggle("abierto");
+  burger.setAttribute("aria-expanded", abierto); burger.setAttribute("aria-label", abierto ? "Cerrar menú" : "Abrir menú");
+});
+menu.querySelectorAll("a").forEach(a => a.addEventListener("click", cerrarMenu));
+
+/* Galería + lightbox */
+const gal = $("#galeria"), lb = $("#lightbox"), vista = $("#lbVista"), lbCap = $("#lbCap");
+let actual = 0, ultimoFoco = null;
+CONFIG.galeria.forEach((g,i) => {
+  const b = document.createElement("button");
+  b.className = "foto rev"; b.style.background = g.color; b.setAttribute("aria-label","Ampliar: " + g.cap);
+  b.innerHTML = `<span aria-hidden="true">${g.emoji}</span><span class="cap">${g.cap}</span>`;
+  if (g.src) {
+    const im = new Image(); im.alt = g.alt; im.loading = "lazy";
+    im.onload = () => b.prepend(im); // si no carga, queda la ilustración
+    im.src = g.src;
+  }
+  b.addEventListener("click", () => abrir(i));
+  gal.appendChild(b);
+});
+function mostrar(i){
+  actual = (i + CONFIG.galeria.length) % CONFIG.galeria.length;
+  const g = CONFIG.galeria[actual];
+  vista.style.background = g.color; vista.innerHTML = "";
+  const emoji = () => { vista.textContent = g.emoji; };
+  if (g.src) { const im = new Image(); im.alt = g.alt; im.onerror = emoji; im.src = g.src; vista.appendChild(im); } else emoji();
+  lbCap.textContent = g.cap + " — " + g.alt;
+}
+function abrir(i){ ultimoFoco = document.activeElement; mostrar(i); lb.classList.add("on"); document.body.style.overflow="hidden"; $(".lb-x").focus(); }
+function cerrar(){ lb.classList.remove("on"); document.body.style.overflow=""; if (ultimoFoco) ultimoFoco.focus(); }
+$(".lb-x").onclick = cerrar; $(".lb-p").onclick = () => mostrar(actual-1); $(".lb-n").onclick = () => mostrar(actual+1);
+lb.addEventListener("click", e => { if (e.target === lb) cerrar(); });
+document.addEventListener("keydown", e => {
+  if (!lb.classList.contains("on")) { if (e.key === "Escape") cerrarMenu(); return; }
+  if (e.key === "Escape") cerrar(); if (e.key === "ArrowLeft") mostrar(actual-1); if (e.key === "ArrowRight") mostrar(actual+1);
+});
+
+/* Datos de contacto: se replican en el pie de página */
+document.querySelectorAll("[data-espejo]").forEach((li,i) => { li.textContent = document.querySelectorAll("[data-editable]")[i].textContent; });
+
+/* Redes sociales */
+document.querySelectorAll("[data-red]").forEach(a => {
+  const url = CONFIG.redes[a.dataset.red];
+  if (url) { a.href = url; a.target = "_blank"; a.rel = "noopener"; }
+  else a.addEventListener("click", e => { e.preventDefault(); aviso("Pendiente: agrega el enlace de " + a.dataset.red + " en CONFIG.redes."); });
+});
+
+/* Formulario */
+const form = $("#form"), estado = $("#estado");
+const reglas = {
+  apoderado: v => v.trim().length >= 3 || "Escribe el nombre del apoderado.",
+  correo:    v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || "Escribe un correo válido.",
+  telefono:  v => v.replace(/\D/g,"").length >= 8 || "Escribe un teléfono de al menos 8 dígitos.",
+  nino:      v => v.trim().length >= 2 || "Escribe el nombre del niño o niña.",
+  edad:      v => v.trim().length >= 1 || "Indica la edad del niño o niña.",
+  mensaje:   v => v.trim().length >= 5 || "Cuéntanos brevemente tu consulta."
+};
+function validar(){
+  let ok = true;
+  for (const [n, fn] of Object.entries(reglas)) {
+    const c = form.elements[n], r = fn(c.value), err = c.parentElement.querySelector(".error");
+    c.setAttribute("aria-invalid", r !== true); err.textContent = r === true ? "" : r;
+    if (r !== true) { if (ok) c.focus(); ok = false; }
+  }
+  return ok;
+}
+form.addEventListener("input", e => { if (e.target.getAttribute("aria-invalid") === "true") { const r = reglas[e.target.name](e.target.value); if (r === true) { e.target.setAttribute("aria-invalid","false"); e.target.parentElement.querySelector(".error").textContent=""; } } });
+const textoConsulta = () => { const f = form.elements;
+  return `Hola, soy ${f.apoderado.value.trim()}. Quisiera información en Arcorisol para ${f.nino.value.trim()} (${f.edad.value.trim()}).\n\n${f.mensaje.value.trim()}\n\nContacto: ${f.telefono.value.trim()} / ${f.correo.value.trim()}`; };
+form.addEventListener("submit", e => {
+  e.preventDefault(); estado.textContent = "";
+  if (!validar()) return;
+  if (PENDIENTE(CONFIG.correo)) { estado.textContent = "Falta configurar el correo de destino en CONFIG.correo."; return; }
+  location.href = `mailto:${CONFIG.correo}?subject=${encodeURIComponent("Consulta desde la web de Arcorisol")}&body=${encodeURIComponent(textoConsulta())}`;
+  estado.textContent = "Se abrió tu programa de correo con la consulta lista para enviar.";
+});
+function irWhatsApp(texto){
+  if (PENDIENTE(CONFIG.whatsapp)) { aviso("Falta configurar el número en CONFIG.whatsapp."); return; }
+  window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(texto)}`, "_blank", "noopener");
+}
+$("#btnWa").addEventListener("click", () => { estado.textContent = ""; if (validar()) irWhatsApp(textoConsulta()); });
+$("#waFlot").addEventListener("click", e => { e.preventDefault(); irWhatsApp("Hola, quisiera información sobre Arcorisol."); });
+
+/* Aparición al desplazarse */
+const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add("vis"); io.unobserve(x.target); } }), { threshold:.12 }) : null;
+document.querySelectorAll(".rev").forEach(el => io ? io.observe(el) : el.classList.add("vis"));
+</script>
+</body>
+</html>
